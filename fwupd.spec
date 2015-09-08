@@ -1,7 +1,7 @@
 
 Summary:	Firmware update daemon
 Name:		fwupdate
-Version:	0.1.1
+Version:	0.1.5
 Release:	1
 License:	GPLv2+
 URL:		https://github.com/rhinstaller/fwupdate
@@ -9,7 +9,7 @@ Source0:	https://github.com/hughsie/fwupd/archive/%{name}_%(echo %{version} | tr
 BuildRequires:	pkgconfig(systemd)
 BuildRequires:	pkgconfig(colord)
 BuildRequires:	pkgconfig(polkit-gobject-1)
-#Buildrequires:	fwupdate-devel
+BuildRequires:	fwupdate-devel
 ExclusiveArch:	x86_64 %{ix86} aarch64
 
 %description
