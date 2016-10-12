@@ -1,7 +1,6 @@
-
 Summary:	Firmware update daemon
 Name:		fwupdate
-Version:	0.1.5
+Version:	0.7.4
 Release:	1
 License:	GPLv2+
 URL:		https://github.com/rhinstaller/fwupdate
