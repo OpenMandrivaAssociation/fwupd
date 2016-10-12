@@ -4,7 +4,7 @@ Version:	0.7.4
 Release:	1
 License:	GPLv2+
 URL:		https://github.com/rhinstaller/fwupdate
-Source0:	https://github.com/hughsie/fwupd/archive/%{name}_%(echo %{version} | tr . _).tar.gz
+Source0:	https://github.com/hughsie/fwupd/archive/%{name}_%(echo %{version} | tr . _).tar.xz
 BuildRequires:	pkgconfig(systemd)
 BuildRequires:	pkgconfig(colord)
 BuildRequires:	pkgconfig(polkit-gobject-1)
