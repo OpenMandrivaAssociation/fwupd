@@ -1,15 +1,16 @@
 Summary:	Firmware update daemon
 Name:		fwupdate
-Version:	0.7.4
+Version:	1.0.9
 Release:	1
 License:	GPLv2+
 URL:		https://github.com/rhinstaller/fwupdate
-Source0:	https://github.com/hughsie/fwupd/archive/%{name}_%(echo %{version} | tr . _).tar.xz
+Source0:	https://github.com/hughsie/fwupd/archive/%{name}-%{version}.tar.gz
 BuildRequires:	pkgconfig(systemd)
 BuildRequires:	pkgconfig(colord)
 BuildRequires:	pkgconfig(polkit-gobject-1)
 BuildRequires:	fwupdate-devel
-ExclusiveArch:	x86_64 %{ix86} aarch64
+BuildRequires:	systemd-macros
+ExclusiveArch:	%{x86_64} %{ix86} aarch64
 
 %description
 fwupd is a simple daemon to allow session software
