@@ -8,7 +8,7 @@ Source0:	https://github.com/hughsie/fwupd/archive/%{name}-%{version}.tar.gz
 BuildRequires:	pkgconfig(systemd)
 BuildRequires:	pkgconfig(colord)
 BuildRequires:	pkgconfig(polkit-gobject-1)
-BuildRequires:	fwupdate-devel
+BuildRequires:	pkgconfig(fwup)
 BuildRequires:	systemd-macros
 ExclusiveArch:	%{x86_64} %{ix86} aarch64
 
@@ -27,3 +27,4 @@ to update device firmware on your local machine.
 %make_install
 
 %files
+test
