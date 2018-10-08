@@ -20,7 +20,7 @@ fwupd is a simple daemon to allow session software
 to update device firmware on your local machine.
 
 %prep
-%autsetup -p1
+%autosetup -p1
 
 %build
 %meson -Dman=false -Dtests=false -Dgtkdoc=false
