@@ -9,6 +9,7 @@ BuildRequires:	pkgconfig(systemd)
 BuildRequires:	pkgconfig(colord)
 BuildRequires:	pkgconfig(polkit-gobject-1)
 BuildRequires:	pkgconfig(fwup)
+BuildRequires:	pkgconfig(gudev-1.0)
 BuildRequires:	systemd-macros
 BuildRequires:	meson
 BuildRequires:	gnu-efi
