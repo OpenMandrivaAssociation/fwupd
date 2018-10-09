@@ -30,6 +30,9 @@ BuildRequires:	pkgconfig(umockdev-1.0)
 BuildRequires:	pkgconfig(udev)
 BuildRequires:	pkgconfig(bash-completion)
 BuildRequires:	python3egg(pygobject)
+BuildRequires:	pkgconfig(py3cairo)
+BuildRequires:	pkgconfig(pangocairo)
+BuildRequires:	python3egg(pillow)
 BuildRequires:	systemd-macros
 BuildRequires:	meson
 BuildRequires:	gnu-efi
