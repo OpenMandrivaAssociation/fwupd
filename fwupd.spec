@@ -28,6 +28,8 @@ BuildRequires:	pkgconfig(cairo)
 BuildRequires:	pkgconfig(libsmbios_c)
 BuildRequires:	pkgconfig(umockdev-1.0)
 BuildRequires:	pkgconfig(udev)
+BuildRequires:	pkgconfig(bash-completion)
+BuildRequires:	python3egg(pygobject)
 BuildRequires:	systemd-macros
 BuildRequires:	meson
 BuildRequires:	gnu-efi
