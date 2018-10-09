@@ -42,6 +42,8 @@ BuildRequires:	pkgconfig(valgrind)
 BuildRequires:	meson
 BuildRequires:	gnu-efi
 BuildRequires:	pesign
+BuildRequires:	vala-devel
+BuildRequires:	vala-tools
 ExclusiveArch:	%{x86_64} %{ix86} aarch64
 
 %description
