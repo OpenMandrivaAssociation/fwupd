@@ -35,7 +35,7 @@ BuildRequires:	pkgconfig(pangocairo)
 BuildRequires:	python3egg(pillow)
 BuildRequires:	systemd-macros
 BuildRequires:	git-core
-BuildRequires:	valgrind
+BuildRequires:	pkgconfig(valgrind)
 BuildRequires:	meson
 BuildRequires:	gnu-efi
 BuildRequires:	pesign
