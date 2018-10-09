@@ -1,3 +1,5 @@
+%global _disable_lto 1
+
 Summary:	Firmware update daemon
 Name:		fwupd
 Version:	1.1.2
