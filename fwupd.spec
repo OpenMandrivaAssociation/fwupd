@@ -17,7 +17,7 @@ BuildRequires:	pkgconfig(sqlite3)
 BuildRequires:	pkgconfig(libarchive)
 BuildRequires:	pkgconfig(json-glib-1.0)
 BuildRequires:	pkgconfig(libsoup-2.4)
-pBuildRequires:	kgconfig(gnutls)
+BuildRequires:	pkgconfig(gnutls)
 BuildRequires:	gpgme-devel
 BuildRequires:	pkgconfig(uuid)
 BuildRequires:	pkgconfig(libgcab-1.0)
