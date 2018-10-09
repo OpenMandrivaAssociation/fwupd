@@ -26,7 +26,7 @@ BuildRequires:	pkgconfig(efivar)
 BuildRequires:	pkgconfig(efiboot)
 BuildRequires:	pkgconfig(cairo)
 BuildRequires:	pkgconfig(libsmbios_c)
-#BuildRequires:	pkgconfig(umockdev-1.0)
+BuildRequires:	pkgconfig(umockdev-1.0)
 BuildRequires:	pkgconfig(udev)
 BuildRequires:	systemd-macros
 BuildRequires:	meson
