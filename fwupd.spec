@@ -71,7 +71,7 @@ Summary:	Development files for %{name}
 Group:	Development/C
 Requires:	%{libname} = %{EVRD}
 
-%description -n %{develname
+%description -n %{develname}
 Development files for %{name}.
 
 %prep
