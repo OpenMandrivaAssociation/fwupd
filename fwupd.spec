@@ -93,7 +93,7 @@ EOF
 
 %files -f %{name}.lang
 %dir %{_sysconfdir}/%{name}
-%dir %{_sysconfdir}pki/%{name}-metadata
+%dir %{_sysconfdir}/pki/%{name}-metadata
 %dir %{_sysconfdir}/pki/%{name}
 %dir %{_libdir}/%{name}-plugins-3
 %dir %{_libexecdir}/%{name}
