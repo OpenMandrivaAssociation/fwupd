@@ -1,4 +1,5 @@
 %global _disable_lto 1
+%global _disable_ld_no_undefined 1
 
 Summary:	Firmware update daemon
 Name:		fwupd
