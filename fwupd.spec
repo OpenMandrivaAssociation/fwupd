@@ -47,6 +47,7 @@ BuildRequires:	gnu-efi
 BuildRequires:	pesign
 BuildRequires:	vala-devel
 BuildRequires:	vala-tools
+BuildRequires:	noto-sans-fonts
 ExclusiveArch:	%{x86_64} %{ix86} aarch64
 
 %description
