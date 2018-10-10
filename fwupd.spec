@@ -1,7 +1,7 @@
 %global _disable_lto 1
 %global _disable_ld_no_undefined 1
 
-%define major 0
+%define major 2
 %define libname %mklibname %{name} %{major}
 %define develname %mklibname %{name} -d
 
@@ -130,4 +130,3 @@ EOF
 %{_libdir}/girepository-1.0/*.typelib
 %{_datadir}/gir-1.0/*.gir
 %{_datadir}/vala/vapi/%{name}.*
-
