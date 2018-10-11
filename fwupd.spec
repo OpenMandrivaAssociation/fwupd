@@ -100,7 +100,7 @@ EOF
 %dir %{_datadir}/%{name}
 %dir %{_var}/lib/fwupd
 %{_sysconfdir}/dbus-1/system.d/*.conf
-%{_sysconfdir}/%{name}/*.conf
+%{_sysconfdir}/%{name}/*
 %{_sysconfdir}/pki/%{name}-metadata/*
 %{_sysconfdir}/pki/%{name}/*
 %{_bindir}/*
@@ -119,6 +119,7 @@ EOF
 %{_datadir}/bash-completion/completions/%{name}*
 %{_datadir}/metainfo/*.xml
 %{_var}/lib/fwupd/*
+%{_datadir}/locale/*/LC_IMAGES/%{name}*
 
 %files -n %{libname}
 %{_libdir}/lib%{name}.so.%{major}*
