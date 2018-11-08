@@ -43,6 +43,7 @@ BuildRequires:	pkgconfig(pangocairo)
 BuildRequires:	python3egg(pillow)
 BuildRequires:	pkgconfig(python)
 BuildRequires:	pkgconfig(pygobject-3.0)
+BuildRequires:	pkgconfig(xmlb)
 BuildRequires:	python-gi-cairo
 BuildRequires:	systemd-macros
 BuildRequires:	git-core
