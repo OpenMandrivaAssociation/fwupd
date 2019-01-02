@@ -7,7 +7,7 @@
 
 Summary:	Firmware update daemon
 Name:		fwupd
-Version:	1.2.1
+Version:	1.2.2
 Release:	1
 License:	GPLv2+
 Group:	System/Boot and Init
@@ -54,6 +54,7 @@ BuildRequires:	pesign
 BuildRequires:	vala-devel
 BuildRequires:	vala-tools
 BuildRequires:	noto-sans-fonts
+Requires:	settings-desktop-schemas
 ExclusiveArch:	%{x86_64} %{ix86} aarch64
 
 %description
