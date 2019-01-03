@@ -54,7 +54,7 @@ BuildRequires:	pesign
 BuildRequires:	vala-devel
 BuildRequires:	vala-tools
 BuildRequires:	noto-sans-fonts
-Requires:	settings-desktop-schemas
+Requires:	gsettings-desktop-schemas
 ExclusiveArch:	%{x86_64} %{ix86} aarch64
 
 %description
