@@ -80,7 +80,7 @@ Development files for %{name}.
 %autosetup -p1
 
 %build
-%meson -Dman=false -Dtests=false -Dgtkdoc=false
+%meson -Dman=false -Dtests=false -Dgtkdoc=false -Dsystemdunitdir=%{_unitdir}
 %meson_build
 
 %install
