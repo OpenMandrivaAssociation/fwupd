@@ -120,6 +120,7 @@ EOF
 %{_datadir}/%{name}/*
 %{_datadir}/bash-completion/completions/%{name}*
 %{_datadir}/metainfo/*.xml
+%{_iconsdir}/hicolor/scalable/apps/*.svg
 %{_var}/lib/fwupd/*
 %{_datadir}/locale/*/LC_IMAGES/%{name}*
 
