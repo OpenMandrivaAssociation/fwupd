@@ -7,12 +7,12 @@
 
 Summary:	Firmware update daemon
 Name:		fwupd
-Version:	1.2.5
+Version:	1.2.7
 Release:	1
 License:	GPLv2+
 Group:	System/Boot and Init
 URL:		https://github.com/hughsie/fwupd
-Source0:	https://github.com/hughsie/fwupd/archive/%{name}-%{version}.tar.gz
+Source0:	https://github.com/hughsie/fwupd/archive/%{version}.tar.gz
 BuildRequires:	pkgconfig(systemd)
 BuildRequires:	pkgconfig(colord)
 BuildRequires:	pkgconfig(polkit-gobject-1)
@@ -111,6 +111,7 @@ EOF
 %{_unitdir}/%{name}-offline-update.service
 %{_unitdir}/%{name}.service
 %{_unitdir}/system-update.target.wants/*.service
+/lib/systemd/system-shutdown/fwupd.shutdown
 /lib/udev/rules.d/*.rules
 %{_libdir}/%{name}-plugins-3/*.so
 %{_datadir}/dbus-1/interfaces/*.xml
