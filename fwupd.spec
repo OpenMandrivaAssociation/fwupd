@@ -7,7 +7,7 @@
 
 Summary:	Firmware update daemon
 Name:		fwupd
-Version:	1.2.8
+Version:	1.2.9
 Release:	1
 License:	GPLv2+
 Group:		System/Boot and Init
@@ -63,14 +63,14 @@ to update device firmware on your local machine.
 
 %package -n %{libname}
 Summary:	Libraries for %{name}
-Group:	System/Libraries
+Group:		System/Libraries
 
 %description -n %{libname}
 System libraries for %{name}.
 
 %package -n %{develname}
 Summary:	Development files for %{name}
-Group:	Development/C
+Group:		Development/C
 Requires:	%{libname} = %{EVRD}
 
 %description -n %{develname}
