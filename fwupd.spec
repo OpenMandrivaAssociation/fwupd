@@ -49,6 +49,7 @@ BuildRequires:	systemd-macros
 BuildRequires:	git-core
 BuildRequires:	pkgconfig(valgrind)
 BuildRequires:	meson
+BuildRequires:	cmake
 BuildRequires:	gnu-efi
 BuildRequires:	pesign
 BuildRequires:	vala-devel
