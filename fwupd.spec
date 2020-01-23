@@ -7,8 +7,8 @@
 
 Summary:	Firmware update daemon
 Name:		fwupd
-Version:	1.3.2
-Release:	2
+Version:	1.3.6
+Release:	1
 License:	GPLv2+
 Group:		System/Boot and Init
 URL:		https://github.com/hughsie/fwupd
@@ -16,7 +16,6 @@ Source0:	https://github.com/hughsie/fwupd/archive/%{name}-%{version}.tar.gz
 BuildRequires:	pkgconfig(systemd)
 BuildRequires:	pkgconfig(colord)
 BuildRequires:	pkgconfig(polkit-gobject-1)
-BuildRequires:	pkgconfig(fwup)
 BuildRequires:	pkgconfig(gudev-1.0)
 BuildRequires:	pkgconfig(appstream-glib)
 BuildRequires:	pkgconfig(gio-2.0)
@@ -44,6 +43,7 @@ BuildRequires:	python3egg(pillow)
 BuildRequires:	pkgconfig(python)
 BuildRequires:	pkgconfig(pygobject-3.0)
 BuildRequires:	pkgconfig(xmlb)
+BuildRequires:	pkgconfig(tss2-esys)
 BuildRequires:	python-gi-cairo
 BuildRequires:	systemd-macros
 BuildRequires:	git-core
