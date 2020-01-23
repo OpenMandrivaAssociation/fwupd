@@ -44,6 +44,8 @@ BuildRequires:	pkgconfig(python)
 BuildRequires:	pkgconfig(pygobject-3.0)
 BuildRequires:	pkgconfig(xmlb)
 BuildRequires:	pkgconfig(tss2-esys)
+BuildRequires:	pkgconfig(ModemManager)
+BuildRequires:	pkgconfig(qmi-glib)
 BuildRequires:	python-gi-cairo
 BuildRequires:	systemd-macros
 BuildRequires:	git-core
@@ -56,6 +58,8 @@ BuildRequires:	vala-devel
 BuildRequires:	vala-tools
 BuildRequires:	noto-sans-fonts
 Requires:	gsettings-desktop-schemas
+Requires:	bubblewrap
+Requires:	shared-mime-info
 ExclusiveArch:	%{x86_64} %{ix86} aarch64
 
 %description
@@ -81,7 +85,7 @@ Development files for %{name}.
 %autosetup -p1
 
 %build
-%meson -Dman=false -Dtests=false -Dgtkdoc=false -Dsystemdunitdir=%{_unitdir}
+%meson -Dman=false -Dtests=false -Dgtkdoc=false -Dsystemdunitdir=%{_unitdir} -Dplugin_modem_manager=true
 %meson_build
 
 %install
@@ -91,6 +95,10 @@ install -d %{buildroot}%{_presetdir}
 cat > %{buildroot}%{_presetdir}/86-%{name}.preset << EOF
 enable %{name}.service
 EOF
+
+mkdir -p --mode=0700 %{buildroot}%{_localstatedir}/lib/fwupd/gnupg
+# workaround for https://bugzilla.redhat.com/show_bug.cgi?id=1757948
+mkdir -p %{buildroot}%{_localstatedir}/cache/fwupd
 
 %find_lang %{name}
 
@@ -102,7 +110,6 @@ EOF
 %dir %{_libexecdir}/%{name}
 %dir %{_datadir}/%{name}
 %dir %{_var}/lib/fwupd
-%{_sysconfdir}/dbus-1/system.d/*.conf
 %{_sysconfdir}/%{name}/*
 %{_sysconfdir}/pki/%{name}-metadata/*
 %{_sysconfdir}/pki/%{name}/*
@@ -115,6 +122,7 @@ EOF
 /lib/systemd/system-shutdown/fwupd.shutdown
 /lib/udev/rules.d/*.rules
 %{_libdir}/%{name}-plugins-3/*.so
+%{_datadir}/dbus-1/system.d/*.conf
 %{_datadir}/dbus-1/interfaces/*.xml
 %{_datadir}/dbus-1/system-services/*.service
 %{_datadir}/polkit-1/actions/*.policy
@@ -125,6 +133,10 @@ EOF
 %{_iconsdir}/hicolor/scalable/apps/*.svg
 %{_var}/lib/fwupd/*
 %{_datadir}/locale/*/LC_IMAGES/%{name}*
+%dir %{_localstatedir}/lib/fwupd
+%dir %{_localstatedir}/cache/fwupd
+%ghost %{_localstatedir}/lib/fwupd/gnupg
+%{_localstatedir}/lib/fwupd/builder/README.md
 
 %files -n %{libname}
 %{_libdir}/lib%{name}.so.%{major}*
