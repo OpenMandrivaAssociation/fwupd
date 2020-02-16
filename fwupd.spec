@@ -2,12 +2,13 @@
 %global _disable_ld_no_undefined 1
 
 %define major 2
+%define plug_major 1
 %define libname %mklibname %{name} %{major}
 %define develname %mklibname %{name} -d
 
 Summary:	Firmware update daemon
 Name:		fwupd
-Version:	1.3.6
+Version:	1.3.8
 Release:	1
 License:	GPLv2+
 Group:		System/Boot and Init
@@ -119,6 +120,9 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/fwupd
 %{_unitdir}/%{name}-offline-update.service
 %{_unitdir}/%{name}.service
 %{_unitdir}/system-update.target.wants/*.service
+%{_unitdir}/fwupd-refresh.service
+%{_unitdir}/fwupd-refresh.timer
+%{_presetdir}/fwupd-refresh.preset
 /lib/systemd/system-shutdown/fwupd.shutdown
 /lib/udev/rules.d/*.rules
 %{_libdir}/%{name}-plugins-3/*.so
@@ -139,13 +143,16 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/fwupd
 %{_localstatedir}/lib/fwupd/builder/README.md
 
 %files -n %{libname}
-%{_libdir}/lib%{name}.so.%{major}*
+%{_libdir}/lib%{name}*.so.%{major}*
+%{_libdir}/libfwupdplugin.so.%{plug_major}*
 
 %files -n %{develname}
 %{_includedir}/%{name}-1
-%{_libdir}/lib%{name}.so
+%{_libdir}/lib%{name}*.so
 %{_libdir}/pkgconfig/%{name}.pc
+%{_libdir}/pkgconfig/fwupdplugin.pc
 %{_libdir}/girepository-1.0/*.typelib
 %{_datadir}/gir-1.0/*.gir
 %{_datadir}/vala/vapi/%{name}.*
 %{_datadir}/installed-tests/%{name}
+%{_datadir}/vala/vapi/fwupdplugin*
