@@ -8,7 +8,7 @@
 
 Summary:	Firmware update daemon
 Name:		fwupd
-Version:	1.3.8
+Version:	1.3.9
 Release:	1
 License:	GPLv2+
 Group:		System/Boot and Init
@@ -131,6 +131,7 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/fwupd
 %{_datadir}/dbus-1/system-services/*.service
 %{_datadir}/polkit-1/actions/*.policy
 %{_datadir}/polkit-1/rules.d/*.rules
+%{_datadir}/fish/vendor_completions.d/fwupdmgr.fish
 %{_datadir}/%{name}/*
 %{_datadir}/bash-completion/completions/%{name}*
 %{_datadir}/metainfo/*.xml
