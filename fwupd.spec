@@ -156,5 +156,4 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/fwupd
 %{_libdir}/girepository-1.0/*.typelib
 %{_datadir}/gir-1.0/*.gir
 %{_datadir}/vala/vapi/%{name}.*
-%{_datadir}/installed-tests/%{name}
 %{_datadir}/vala/vapi/fwupdplugin*
