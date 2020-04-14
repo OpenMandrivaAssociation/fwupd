@@ -8,7 +8,7 @@
 
 Summary:	Firmware update daemon
 Name:		fwupd
-Version:	1.3.9
+Version:	1.4.0
 Release:	1
 License:	GPLv2+
 Group:		System/Boot and Init
@@ -23,6 +23,7 @@ BuildRequires:	pkgconfig(gio-2.0)
 BuildRequires:	pkgconfig(gusb)
 BuildRequires:	pkgconfig(sqlite3)
 BuildRequires:	pkgconfig(libarchive)
+BuildRequires:  pkgconfig(jcat)
 BuildRequires:	pkgconfig(json-glib-1.0)
 BuildRequires:	pkgconfig(libsoup-2.4)
 BuildRequires:	pkgconfig(gnutls)
@@ -155,5 +156,4 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/fwupd
 %{_libdir}/girepository-1.0/*.typelib
 %{_datadir}/gir-1.0/*.gir
 %{_datadir}/vala/vapi/%{name}.*
-%{_datadir}/installed-tests/%{name}
 %{_datadir}/vala/vapi/fwupdplugin*
