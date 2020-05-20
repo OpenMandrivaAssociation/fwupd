@@ -8,12 +8,12 @@
 
 Summary:	Firmware update daemon
 Name:		fwupd
-Version:	1.4.1
+Version:	1.4.2
 Release:	1
 License:	GPLv2+
 Group:		System/Boot and Init
-URL:		https://github.com/hughsie/fwupd
-Source0:	https://github.com/hughsie/fwupd/archive/%{name}-%{version}.tar.gz
+URL:		https://github.com/fwupd/fwupd
+Source0:	https://github.com/fwupd/fwupd/archive/%{version}.tar.gz
 BuildRequires:	pkgconfig(systemd)
 BuildRequires:	pkgconfig(colord)
 BuildRequires:	pkgconfig(polkit-gobject-1)
