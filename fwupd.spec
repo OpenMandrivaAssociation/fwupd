@@ -13,7 +13,7 @@ Release:	1
 License:	GPLv2+
 Group:		System/Boot and Init
 URL:		https://github.com/fwupd/fwupd
-Source0:	https://github.com/fwupd/fwupd/archive/%{version}.tar.gz
+Source0:	https://github.com/fwupd/fwupd/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:	pkgconfig(systemd)
 BuildRequires:	pkgconfig(colord)
 BuildRequires:	pkgconfig(polkit-gobject-1)
