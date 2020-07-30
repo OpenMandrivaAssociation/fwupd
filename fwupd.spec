@@ -8,7 +8,7 @@
 
 Summary:	Firmware update daemon
 Name:		fwupd
-Version:	1.4.4
+Version:	1.4.5
 Release:	1
 License:	GPLv2+
 Group:		System/Boot and Init
@@ -41,7 +41,7 @@ BuildRequires:	pkgconfig(bash-completion)
 BuildRequires:	pkgconfig(pygobject-3.0)
 BuildRequires:	pkgconfig(py3cairo)
 BuildRequires:	pkgconfig(pangocairo)
-BuildRequires:	python3egg(pillow)
+BuildRequires:	python3dist(pillow)
 BuildRequires:	pkgconfig(python)
 BuildRequires:	pkgconfig(pygobject-3.0)
 BuildRequires:	pkgconfig(xmlb)
