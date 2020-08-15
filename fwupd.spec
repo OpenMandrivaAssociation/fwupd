@@ -1,3 +1,5 @@
+%global debug_package %{nil}
+
 %global _disable_lto 1
 %global _disable_ld_no_undefined 1
 
@@ -9,11 +11,12 @@
 Summary:	Firmware update daemon
 Name:		fwupd
 Version:	1.4.5
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		System/Boot and Init
 URL:		https://github.com/fwupd/fwupd
 Source0:	https://github.com/fwupd/fwupd/archive/%{version}/%{name}-%{version}.tar.gz
+Patch0:		fwupd-1.4.5-fix-compiler-warnings.patch
 BuildRequires:	pkgconfig(systemd)
 BuildRequires:	pkgconfig(colord)
 BuildRequires:	pkgconfig(polkit-gobject-1)
@@ -89,7 +92,16 @@ Development files for %{name}.
 %autosetup -p1
 
 %build
-%meson -Dman=false -Dtests=false -Dgtkdoc=false -Dsystemdunitdir=%{_unitdir} -Dplugin_modem_manager=true
+%meson \
+	-Dman=false \
+	-Dtests=false \
+	-Dgtkdoc=false \
+	-Dsystemdunitdir=%{_unitdir} \
+%ifnarch %{x86_64} %{ix86}
+	-Dplugin_dell=false \
+	-Defi-ld=ld.bfd \
+%endif
+	-Dplugin_modem_manager=true
 %meson_build
 
 %install
