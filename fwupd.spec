@@ -34,7 +34,6 @@ BuildRequires:	pkgconfig(libelf)
 BuildRequires:	pkgconfig(efivar)
 BuildRequires:	pkgconfig(efiboot)
 BuildRequires:	pkgconfig(cairo)
-BuildRequires:	pkgconfig(libsmbios_c)
 BuildRequires:	pkgconfig(umockdev-1.0)
 BuildRequires:	pkgconfig(udev)
 BuildRequires:	pkgconfig(bash-completion)
@@ -62,7 +61,10 @@ BuildRequires:	noto-sans-fonts
 Requires:	gsettings-desktop-schemas
 Requires:	bubblewrap
 Requires:	shared-mime-info
-ExclusiveArch:	%{x86_64} %{ix86} aarch64
+ExclusiveArch:	%{x86_64} %{ix86} %{aarch64}
+%ifarch %{ix86} %{x86_64}
+BuildRequires:	pkgconfig(libsmbios_c)
+%endif
 
 %description
 fwupd is a simple daemon to allow session software
