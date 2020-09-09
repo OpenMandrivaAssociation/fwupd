@@ -10,13 +10,12 @@
 
 Summary:	Firmware update daemon
 Name:		fwupd
-Version:	1.4.5
-Release:	2
+Version:	1.4.6
+Release:	1
 License:	GPLv2+
 Group:		System/Boot and Init
 URL:		https://github.com/fwupd/fwupd
 Source0:	https://github.com/fwupd/fwupd/archive/%{version}/%{name}-%{version}.tar.gz
-Patch0:		fwupd-1.4.5-fix-compiler-warnings.patch
 BuildRequires:	pkgconfig(systemd)
 BuildRequires:	pkgconfig(colord)
 BuildRequires:	pkgconfig(polkit-gobject-1)
