@@ -124,7 +124,7 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/fwupd
 %dir %{_libdir}/%{name}-plugins-3
 %dir %{_libexecdir}/%{name}
 %dir %{_datadir}/%{name}
-%dir %{_var}/lib/fwupd
+%{_sysconfdir}/modules-load.d/*.conf
 %{_sysconfdir}/%{name}/*
 %{_sysconfdir}/pki/%{name}-metadata/*
 %{_sysconfdir}/pki/%{name}/*
