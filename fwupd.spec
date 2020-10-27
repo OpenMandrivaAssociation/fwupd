@@ -2,6 +2,7 @@
 
 %global _disable_lto 1
 %global _disable_ld_no_undefined 1
+%global __requires_exclude ^%{python3}$
 
 %define major 2
 %define plug_major 1
@@ -101,6 +102,7 @@ Development files for %{name}.
 	-Defi-ld=ld.bfd \
 %endif
 	-Dplugin_modem_manager=true
+
 %meson_build
 
 %install
