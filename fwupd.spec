@@ -100,6 +100,7 @@ Development files for %{name}.
 %ifnarch %{x86_64} %{ix86}
 	-Dplugin_dell=false \
 	-Defi-ld=ld.bfd \
+	-Dplugin_msr=true \
 %endif
 	-Dplugin_modem_manager=true
 
