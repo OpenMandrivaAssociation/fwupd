@@ -2,7 +2,6 @@
 
 %global _disable_lto 1
 %global _disable_ld_no_undefined 1
-%global __requires_exclude ^%{python3}$
 
 %define major 2
 %define plug_major 1
@@ -11,7 +10,7 @@
 
 Summary:	Firmware update daemon
 Name:		fwupd
-Version:	1.5.1
+Version:	1.5.2
 Release:	1
 License:	GPLv2+
 Group:		System/Boot and Init
@@ -127,7 +126,7 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/fwupd
 %dir %{_libdir}/%{name}-plugins-3
 %dir %{_libexecdir}/%{name}
 %dir %{_datadir}/%{name}
-%{_sysconfdir}/modules-load.d/*.conf
+/lib/modules-load.d/*
 %{_sysconfdir}/%{name}/*
 %{_sysconfdir}/pki/%{name}-metadata/*
 %{_sysconfdir}/pki/%{name}/*
