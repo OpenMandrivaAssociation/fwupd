@@ -10,7 +10,7 @@
 
 Summary:	Firmware update daemon
 Name:		fwupd
-Version:	1.5.3
+Version:	1.5.4
 Release:	1
 License:	GPLv2+
 Group:		System/Boot and Init
