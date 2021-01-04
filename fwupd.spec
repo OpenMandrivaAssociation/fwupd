@@ -126,7 +126,11 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/fwupd
 %dir %{_libdir}/%{name}-plugins-3
 %dir %{_libexecdir}/%{name}
 %dir %{_datadir}/%{name}
+# modules-load.d is created on x86 for msr bits
+# but not on aarch64
+%ifarch %{ix86} %{x86_64}
 /lib/modules-load.d/*
+%endif
 %{_sysconfdir}/%{name}/*
 %{_sysconfdir}/pki/%{name}-metadata/*
 %{_sysconfdir}/pki/%{name}/*
