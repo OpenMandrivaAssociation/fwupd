@@ -157,7 +157,7 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/fwupd
 %{_datadir}/metainfo/*.xml
 %{_iconsdir}/hicolor/scalable/apps/*.svg
 %{_var}/lib/fwupd/*
-%{_datadir}/locale/*/LC_IMAGES/%{name}*
+#{_datadir}/locale/*/LC_IMAGES/%{name}*
 %dir %{_localstatedir}/lib/fwupd
 %dir %{_localstatedir}/cache/fwupd
 %ghost %{_localstatedir}/lib/fwupd/gnupg
