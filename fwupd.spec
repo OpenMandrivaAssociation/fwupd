@@ -10,7 +10,7 @@
 
 Summary:	Firmware update daemon
 Name:		fwupd
-Version:	1.5.9
+Version:	1.5.10
 Release:	1
 License:	GPLv2+
 Group:		System/Boot and Init
@@ -25,7 +25,7 @@ BuildRequires:	pkgconfig(gio-2.0)
 BuildRequires:	pkgconfig(gusb)
 BuildRequires:	pkgconfig(sqlite3)
 BuildRequires:	pkgconfig(libarchive)
-BuildRequires:  pkgconfig(jcat)
+BuildRequires:	pkgconfig(jcat)
 BuildRequires:	pkgconfig(json-glib-1.0)
 BuildRequires:	pkgconfig(libsoup-2.4)
 BuildRequires:	pkgconfig(gnutls)
