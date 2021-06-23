@@ -57,6 +57,7 @@ BuildRequires:	meson
 BuildRequires:	cmake
 BuildRequires:	gnu-efi
 BuildRequires:	pesign
+BuildRequires:	mingw
 BuildRequires:	vala-devel
 BuildRequires:	vala-tools
 BuildRequires:	noto-sans-fonts
