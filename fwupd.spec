@@ -1,16 +1,14 @@
-%global debug_package %{nil}
-
 %global _disable_lto 1
 %global _disable_ld_no_undefined 1
 
 %define major 2
-%define plug_major 1
+%define plug_major 2
 %define libname %mklibname %{name} %{major}
 %define develname %mklibname %{name} -d
 
 Summary:	Firmware update daemon
 Name:		fwupd
-Version:	1.5.10
+Version:	1.6.2
 Release:	1
 License:	GPLv2+
 Group:		System/Boot and Init
@@ -47,9 +45,13 @@ BuildRequires:	pkgconfig(python)
 BuildRequires:	pkgconfig(pygobject-3.0)
 BuildRequires:	pkgconfig(xmlb)
 BuildRequires:	pkgconfig(tss2-esys)
+BuildRequires:	pkgconfig(fwupd-efi)
 BuildRequires:	pkgconfig(ModemManager)
 BuildRequires:	pkgconfig(qmi-glib)
+BuildRequires:	pkgconfig(mbim-glib)
+BuildRequires:	pkgconfig(gi-docgen)
 BuildRequires:	python-gi-cairo
+BuildRequires:	python-markdown
 BuildRequires:	systemd-macros
 BuildRequires:	git-core
 BuildRequires:	pkgconfig(valgrind)
@@ -127,6 +129,8 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/fwupd
 %dir %{_libdir}/%{name}-plugins-3
 %dir %{_libexecdir}/%{name}
 %dir %{_datadir}/%{name}
+%doc %{_docdir}/fwupd
+%{_sysconfdir}/grub.d/35_fwupd
 # modules-load.d is created on x86 for msr bits
 # but not on aarch64
 %ifarch %{ix86} %{x86_64}
@@ -162,7 +166,6 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/fwupd
 %dir %{_localstatedir}/lib/fwupd
 %dir %{_localstatedir}/cache/fwupd
 %ghost %{_localstatedir}/lib/fwupd/gnupg
-%{_localstatedir}/lib/fwupd/builder/README.md
 
 %files -n %{libname}
 %{_libdir}/lib%{name}*.so.%{major}*
@@ -176,4 +179,3 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/fwupd
 %{_libdir}/girepository-1.0/*.typelib
 %{_datadir}/gir-1.0/*.gir
 %{_datadir}/vala/vapi/%{name}.*
-%{_datadir}/vala/vapi/fwupdplugin*
