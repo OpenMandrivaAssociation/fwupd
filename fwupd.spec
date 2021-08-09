@@ -104,7 +104,9 @@ Development files for %{name}.
 	-Defi-ld=ld.bfd \
 	-Dplugin_msr=false \
 %endif
-	-Dplugin_modem_manager=true
+	-Dplugin_modem_manager=true || :
+
+cat build/meson-logs/meson-log.txt
 
 %meson_build
 
