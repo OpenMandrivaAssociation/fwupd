@@ -50,6 +50,7 @@ BuildRequires:	pkgconfig(ModemManager)
 BuildRequires:	pkgconfig(qmi-glib)
 BuildRequires:	pkgconfig(mbim-glib)
 BuildRequires:	pkgconfig(gi-docgen)
+BuildRequires:	typelib(Pango)
 BuildRequires:	python-gi-cairo
 BuildRequires:	python-markdown
 BuildRequires:	systemd-macros
@@ -104,9 +105,7 @@ Development files for %{name}.
 	-Defi-ld=ld.bfd \
 	-Dplugin_msr=false \
 %endif
-	-Dplugin_modem_manager=true || :
-
-cat build/meson-logs/meson-log.txt
+	-Dplugin_modem_manager=true || cat build/meson-logs/meson-log.txt
 
 %meson_build
 
