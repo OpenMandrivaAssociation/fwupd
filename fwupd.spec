@@ -1,3 +1,5 @@
+%global __requires_exclude ^%{python}$
+
 %global _disable_lto 1
 %global _disable_ld_no_undefined 1
 
@@ -8,7 +10,7 @@
 
 Summary:	Firmware update daemon
 Name:		fwupd
-Version:	1.6.2
+Version:	1.6.4
 Release:	1
 License:	GPLv2+
 Group:		System/Boot and Init
@@ -31,8 +33,6 @@ BuildRequires:	gpgme-devel
 BuildRequires:	pkgconfig(uuid)
 BuildRequires:	pkgconfig(libgcab-1.0)
 BuildRequires:	pkgconfig(libelf)
-BuildRequires:	pkgconfig(efivar)
-BuildRequires:	pkgconfig(efiboot)
 BuildRequires:	pkgconfig(cairo)
 BuildRequires:	pkgconfig(umockdev-1.0)
 BuildRequires:	pkgconfig(udev)
@@ -45,7 +45,13 @@ BuildRequires:	pkgconfig(python)
 BuildRequires:	pkgconfig(pygobject-3.0)
 BuildRequires:	pkgconfig(xmlb)
 BuildRequires:	pkgconfig(tss2-esys)
+BuildRequires:	efi-srpm-macros
+%ifarch %{efi}
 BuildRequires:	pkgconfig(fwupd-efi)
+BuildRequires:	pkgconfig(efivar)
+BuildRequires:	pkgconfig(efiboot)
+BuildRequires:	gnu-efi
+%endif
 BuildRequires:	pkgconfig(ModemManager)
 BuildRequires:	pkgconfig(qmi-glib)
 BuildRequires:	pkgconfig(mbim-glib)
@@ -59,7 +65,6 @@ BuildRequires:	git-core
 BuildRequires:	pkgconfig(valgrind)
 BuildRequires:	meson
 BuildRequires:	cmake
-BuildRequires:	gnu-efi
 BuildRequires:	pesign
 BuildRequires:	mingw
 BuildRequires:	vala-devel
@@ -99,12 +104,11 @@ Development files for %{name}.
 %meson \
 	-Dman=false \
 	-Dtests=false \
-	-Dgtkdoc=false \
-	-Dsystemdunitdir=%{_unitdir} \
 %ifnarch %{x86_64} %{ix86}
 	-Dplugin_dell=false \
 	-Defi-ld=ld.bfd \
 	-Dplugin_msr=false \
+	-Defi_binary=false \
 %endif
 	-Dplugin_modem_manager=true || cat build/meson-logs/meson-log.txt
 
@@ -150,8 +154,8 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/fwupd
 %{_unitdir}/fwupd-refresh.service
 %{_unitdir}/fwupd-refresh.timer
 %{_presetdir}/fwupd-refresh.preset
-/lib/systemd/system-shutdown/fwupd.shutdown
-/lib/udev/rules.d/*.rules
+%{_systemd_util_dir}/system-shutdown/fwupd.shutdown
+%{_udevrulesdir}/*.rules
 %{_libdir}/%{name}-plugins-3/*.so
 %{_datadir}/dbus-1/system.d/*.conf
 %{_datadir}/dbus-1/interfaces/*.xml
