@@ -134,7 +134,7 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/fwupd
 %dir %{_sysconfdir}/%{name}
 %dir %{_sysconfdir}/pki/%{name}-metadata
 %dir %{_sysconfdir}/pki/%{name}
-%dir %{_libdir}/%{name}-plugins-3
+%dir %{_libdir}/%{name}-plugins-4
 %dir %{_libexecdir}/%{name}
 %dir %{_datadir}/%{name}
 %doc %{_docdir}/fwupd
@@ -158,7 +158,7 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/fwupd
 %{_presetdir}/fwupd-refresh.preset
 %{_systemd_util_dir}/system-shutdown/fwupd.shutdown
 %{_udevrulesdir}/*.rules
-%{_libdir}/%{name}-plugins-3/*.so
+%{_libdir}/%{name}-plugins-4/*.so
 %{_datadir}/dbus-1/system.d/*.conf
 %{_datadir}/dbus-1/interfaces/*.xml
 %{_datadir}/dbus-1/system-services/*.service
