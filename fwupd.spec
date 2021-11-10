@@ -171,6 +171,9 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/fwupd
 %{_iconsdir}/hicolor/scalable/apps/*.svg
 %{_var}/lib/fwupd/*
 #{_datadir}/locale/*/LC_IMAGES/%{name}*
+%ifarch aarch64
+/lib/modules-load.d/fwupd-redfish.conf
+%endif
 %dir %{_localstatedir}/lib/fwupd
 %dir %{_localstatedir}/cache/fwupd
 %ghost %{_localstatedir}/lib/fwupd/gnupg
