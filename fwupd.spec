@@ -4,13 +4,13 @@
 %global _disable_ld_no_undefined 1
 
 %define major 2
-%define plug_major 2
+%define plug_major 4
 %define libname %mklibname %{name} %{major}
 %define develname %mklibname %{name} -d
 
 Summary:	Firmware update daemon
 Name:		fwupd
-Version:	1.6.4
+Version:	1.7.1
 Release:	1
 License:	GPLv2+
 Group:		System/Boot and Init
@@ -25,6 +25,7 @@ BuildRequires:	pkgconfig(gio-2.0)
 BuildRequires:	pkgconfig(gusb)
 BuildRequires:	pkgconfig(sqlite3)
 BuildRequires:	pkgconfig(libarchive)
+BuildRequires:	pkgconfig(libprotobuf-c)
 BuildRequires:	pkgconfig(jcat)
 BuildRequires:	pkgconfig(json-glib-1.0)
 BuildRequires:	pkgconfig(libsoup-2.4)
@@ -66,6 +67,7 @@ BuildRequires:	pkgconfig(valgrind)
 BuildRequires:	meson
 BuildRequires:	cmake
 BuildRequires:	pesign
+BuildRequires:	protobuf-c
 BuildRequires:	mingw
 BuildRequires:	vala-devel
 BuildRequires:	vala-tools
@@ -132,7 +134,7 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/fwupd
 %dir %{_sysconfdir}/%{name}
 %dir %{_sysconfdir}/pki/%{name}-metadata
 %dir %{_sysconfdir}/pki/%{name}
-%dir %{_libdir}/%{name}-plugins-3
+%dir %{_libdir}/%{name}-plugins-%{plug_major}
 %dir %{_libexecdir}/%{name}
 %dir %{_datadir}/%{name}
 %doc %{_docdir}/fwupd
@@ -156,7 +158,7 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/fwupd
 %{_presetdir}/fwupd-refresh.preset
 %{_systemd_util_dir}/system-shutdown/fwupd.shutdown
 %{_udevrulesdir}/*.rules
-%{_libdir}/%{name}-plugins-3/*.so
+%{_libdir}/%{name}-plugins-%{plug_major}/*.so
 %{_datadir}/dbus-1/system.d/*.conf
 %{_datadir}/dbus-1/interfaces/*.xml
 %{_datadir}/dbus-1/system-services/*.service
