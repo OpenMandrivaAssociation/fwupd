@@ -4,7 +4,7 @@
 %global _disable_ld_no_undefined 1
 
 %define major 2
-%define plug_major 4
+%define plug_major 5
 %define libname %mklibname %{name} %{major}
 %define develname %mklibname %{name} -d
 
