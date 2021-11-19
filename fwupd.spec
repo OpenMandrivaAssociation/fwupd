@@ -178,6 +178,8 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/fwupd
 %dir %{_localstatedir}/cache/fwupd
 %ghost %{_localstatedir}/lib/fwupd/gnupg
 
+%exclude %{_datadir}/installed-tests/
+
 %files -n %{libname}
 %{_libdir}/lib%{name}*.so.%{major}*
 %{_libdir}/libfwupdplugin.so.%{plug_major}*
