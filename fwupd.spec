@@ -4,13 +4,13 @@
 %global _disable_ld_no_undefined 1
 
 %define major 2
-%define plug_major 4
+%define plug_major 5
 %define libname %mklibname %{name} %{major}
 %define develname %mklibname %{name} -d
 
 Summary:	Firmware update daemon
 Name:		fwupd
-Version:	1.7.1
+Version:	1.7.2
 Release:	1
 License:	GPLv2+
 Group:		System/Boot and Init
@@ -177,6 +177,8 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/fwupd
 %dir %{_localstatedir}/lib/fwupd
 %dir %{_localstatedir}/cache/fwupd
 %ghost %{_localstatedir}/lib/fwupd/gnupg
+
+%exclude %{_datadir}/installed-tests/
 
 %files -n %{libname}
 %{_libdir}/lib%{name}*.so.%{major}*
