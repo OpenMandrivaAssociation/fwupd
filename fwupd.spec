@@ -108,7 +108,6 @@ Development files for %{name}.
 	-Dtests=false \
 %ifnarch %{x86_64} %{ix86}
 	-Dplugin_dell=false \
-	-Defi-ld=ld.bfd \
 	-Dplugin_msr=false \
 	-Defi_binary=false \
 %endif
