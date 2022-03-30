@@ -168,7 +168,6 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/fwupd
 %{_datadir}/bash-completion/completions/%{name}*
 %{_datadir}/metainfo/*.xml
 %{_iconsdir}/hicolor/scalable/apps/*.svg
-%{_var}/lib/fwupd/*
 #{_datadir}/locale/*/LC_IMAGES/%{name}*
 %ifarch aarch64
 /lib/modules-load.d/fwupd-redfish.conf
