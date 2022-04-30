@@ -106,6 +106,7 @@ Development files for %{name}.
 %meson \
 	-Dman=false \
 	-Dtests=false \
+	-Dcbor=false \
 %ifnarch %{x86_64} %{ix86}
 	-Dplugin_dell=false \
 	-Dplugin_msr=false \
