@@ -4,13 +4,13 @@
 %global _disable_ld_no_undefined 1
 
 %define major 2
-%define plug_major 5
+%define plug_major 6
 %define libname %mklibname %{name} %{major}
 %define develname %mklibname %{name} -d
 
 Summary:	Firmware update daemon
 Name:		fwupd
-Version:	1.7.7
+Version:	1.8.1
 Release:	1
 License:	GPLv2+
 Group:		System/Boot and Init
@@ -57,6 +57,7 @@ BuildRequires:	pkgconfig(ModemManager)
 BuildRequires:	pkgconfig(qmi-glib)
 BuildRequires:	pkgconfig(mbim-glib)
 BuildRequires:	pkgconfig(gi-docgen)
+#BuildRequires:	flashrom
 BuildRequires:	python-gi
 BuildRequires:	typelib(Pango)
 BuildRequires:	python-gi-cairo
@@ -106,6 +107,8 @@ Development files for %{name}.
 %meson \
 	-Dman=false \
 	-Dtests=false \
+	-Dcbor=disabled \
+	-Dplugin_flashrom=disabled \
 %ifnarch %{x86_64} %{ix86}
 	-Dplugin_dell=false \
 	-Dplugin_msr=false \
