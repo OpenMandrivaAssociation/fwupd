@@ -57,7 +57,7 @@ BuildRequires:	pkgconfig(ModemManager)
 BuildRequires:	pkgconfig(qmi-glib)
 BuildRequires:	pkgconfig(mbim-glib)
 BuildRequires:	pkgconfig(gi-docgen)
-BuildRequires:	flashrom
+#BuildRequires:	flashrom
 BuildRequires:	python-gi
 BuildRequires:	typelib(Pango)
 BuildRequires:	python-gi-cairo
@@ -108,6 +108,7 @@ Development files for %{name}.
 	-Dman=false \
 	-Dtests=false \
 	-Dcbor=disabled \
+	-Dplugin_flashrom=disabled \
 %ifnarch %{x86_64} %{ix86}
 	-Dplugin_dell=false \
 	-Dplugin_msr=false \
