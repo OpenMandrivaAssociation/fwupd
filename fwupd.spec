@@ -11,7 +11,7 @@
 Summary:	Firmware update daemon
 Name:		fwupd
 Version:	1.8.1
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		System/Boot and Init
 URL:		https://github.com/fwupd/fwupd
@@ -141,11 +141,7 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/fwupd
 %dir %{_datadir}/%{name}
 %doc %{_docdir}/fwupd
 %{_sysconfdir}/grub.d/35_fwupd
-# modules-load.d is created on x86 for msr bits
-# but not on aarch64
-%ifarch %{ix86} %{x86_64}
-/lib/modules-load.d/*
-%endif
+%{_modulesloaddir}/*
 %{_sysconfdir}/%{name}/*
 %{_sysconfdir}/pki/%{name}-metadata/*
 %{_sysconfdir}/pki/%{name}/*
@@ -172,9 +168,6 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/fwupd
 %{_datadir}/metainfo/*.xml
 %{_iconsdir}/hicolor/scalable/apps/*.svg
 #{_datadir}/locale/*/LC_IMAGES/%{name}*
-%ifarch aarch64
-/lib/modules-load.d/fwupd-redfish.conf
-%endif
 %dir %{_localstatedir}/lib/fwupd
 %dir %{_localstatedir}/cache/fwupd
 %ghost %{_localstatedir}/lib/fwupd/gnupg
