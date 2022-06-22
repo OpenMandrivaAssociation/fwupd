@@ -11,7 +11,7 @@
 Summary:	Firmware update daemon
 Name:		fwupd
 Version:	1.8.1
-Release:	2
+Release:	3
 License:	GPLv2+
 Group:		System/Boot and Init
 URL:		https://github.com/fwupd/fwupd
@@ -108,13 +108,33 @@ Development files for %{name}.
 	-Dman=false \
 	-Dtests=false \
 	-Dcbor=disabled \
-	-Dplugin_flashrom=disabled \
-%ifnarch %{x86_64} %{ix86}
-	-Dplugin_dell=false \
-	-Dplugin_msr=false \
-	-Defi_binary=false \
+	-Dbluez=enabled \
+	-Dplugin_powerd=disabled \
+	-Dsupported_build=enabled \
+%ifarch %{x86_64} %{ix86}
+	-Dplugin_dell=enabled \
+	-Dplugin_msr=enabled \
+	-Dplugin_synaptics_mst=enabled \
+%else
+	-Dplugin_dell=disabled \
+	-Dplugin_msr=disabled \
+	-Dplugin_synaptics_mst=disabled \
 %endif
-	-Dplugin_modem_manager=true || cat build/meson-logs/meson-log.txt
+%ifarch %{x86_64} %{aarch64}
+	-Dplugin_gpio=enabled \
+	-Dplugin_flashrom=enabled \
+	-Dplugin_uefi_capsule=enabled \
+	-Dplugin_uefi_pk=enabled \
+	-Dplugin_tpm=enabled \
+	-Defi_binary=false \
+%else
+	-Dplugin_gpio=disabled \
+	-Dplugin_flashrom=disabled \
+	-Dplugin_uefi_capsule=disabled \
+	-Dplugin_uefi_pk=disabled \
+	-Dplugin_tpm=disabled \
+%endif
+	-Dplugin_modem_manager=enabled || cat build/meson-logs/meson-log.txt
 
 %meson_build
 
@@ -131,6 +151,15 @@ mkdir -p --mode=0700 %{buildroot}%{_localstatedir}/lib/fwupd/gnupg
 mkdir -p %{buildroot}%{_localstatedir}/cache/fwupd
 
 %find_lang %{name}
+
+%post
+%systemd_post fwupd.service
+
+%preun
+%systemd_preun fwupd.service
+
+%postun
+%systemd_postun_with_restart fwupd.service
 
 %files -f %{name}.lang
 %dir %{_sysconfdir}/%{name}
