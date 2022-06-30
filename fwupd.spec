@@ -62,7 +62,7 @@ BuildRequires:	python-gi
 BuildRequires:	typelib(Pango)
 BuildRequires:	python-gi-cairo
 BuildRequires:	python-markdown
-BuildRequires:	systemd-macros
+BuildRequires:	systemd-rpm-macros
 BuildRequires:	git-core
 BuildRequires:	pkgconfig(valgrind)
 BuildRequires:	meson
@@ -73,6 +73,7 @@ BuildRequires:	mingw
 BuildRequires:	vala-devel
 BuildRequires:	vala-tools
 BuildRequires:	noto-sans-fonts
+BuildRequires:	pkgconfig(flashrom)
 Requires:	gsettings-desktop-schemas
 Requires:	bubblewrap
 Requires:	shared-mime-info
@@ -123,7 +124,6 @@ Development files for %{name}.
 %ifarch %{x86_64} %{aarch64}
 	-Dplugin_gpio=enabled \
 	-Dplugin_flashrom=enabled \
-	-Dplugin_uefi_capsule=enabled \
 	-Dplugin_uefi_pk=enabled \
 	-Dplugin_tpm=enabled \
 	-Defi_binary=false \
@@ -133,6 +133,11 @@ Development files for %{name}.
 	-Dplugin_uefi_capsule=disabled \
 	-Dplugin_uefi_pk=disabled \
 	-Dplugin_tpm=disabled \
+%endif
+%ifarch %{x86_64}
+	-Dplugin_uefi_capsule=enabled \
+%else
+	-Dplugin_uefi_capsule=disabled \
 %endif
 	-Dplugin_modem_manager=enabled || cat build/meson-logs/meson-log.txt
 
@@ -169,7 +174,7 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/fwupd
 %dir %{_libexecdir}/%{name}
 %dir %{_datadir}/%{name}
 %doc %{_docdir}/fwupd
-%{_sysconfdir}/grub.d/35_fwupd
+%optional %{_sysconfdir}/grub.d/35_fwupd
 %{_modulesloaddir}/*
 %{_sysconfdir}/%{name}/*
 %{_sysconfdir}/pki/%{name}-metadata/*
@@ -200,8 +205,7 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/fwupd
 %dir %{_localstatedir}/lib/fwupd
 %dir %{_localstatedir}/cache/fwupd
 %ghost %{_localstatedir}/lib/fwupd/gnupg
-
-%exclude %{_datadir}/installed-tests/
+%{_libdir}/girepository-1.0/*.typelib
 
 %files -n %{libname}
 %{_libdir}/lib%{name}*.so.%{major}*
@@ -212,6 +216,5 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/fwupd
 %{_libdir}/lib%{name}*.so
 %{_libdir}/pkgconfig/%{name}.pc
 %{_libdir}/pkgconfig/fwupdplugin.pc
-%{_libdir}/girepository-1.0/*.typelib
 %{_datadir}/gir-1.0/*.gir
 %{_datadir}/vala/vapi/%{name}.*
