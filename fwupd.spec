@@ -175,6 +175,7 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/fwupd
 %dir %{_datadir}/%{name}
 %doc %{_docdir}/fwupd
 %doc %{_docdir}/libfwupd
+%doc %{_docdir}/libfwupdplugin
 %optional %{_sysconfdir}/grub.d/35_fwupd
 %{_modulesloaddir}/*
 %{_sysconfdir}/%{name}/*
