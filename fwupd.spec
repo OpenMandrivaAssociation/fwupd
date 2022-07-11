@@ -4,14 +4,14 @@
 %global _disable_ld_no_undefined 1
 
 %define major 2
-%define plug_major 6
+%define plug_major 7
 %define libname %mklibname %{name} %{major}
 %define develname %mklibname %{name} -d
 
 Summary:	Firmware update daemon
 Name:		fwupd
-Version:	1.8.1
-Release:	3
+Version:	1.8.2
+Release:	1
 License:	GPLv2+
 Group:		System/Boot and Init
 URL:		https://github.com/fwupd/fwupd
@@ -174,6 +174,8 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/fwupd
 %dir %{_libexecdir}/%{name}
 %dir %{_datadir}/%{name}
 %doc %{_docdir}/fwupd
+%doc %{_docdir}/libfwupd
+%doc %{_docdir}/libfwupdplugin
 %optional %{_sysconfdir}/grub.d/35_fwupd
 %{_modulesloaddir}/*
 %{_sysconfdir}/%{name}/*
