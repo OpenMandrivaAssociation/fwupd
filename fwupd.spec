@@ -176,8 +176,10 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/fwupd
 %doc %{_docdir}/fwupd
 %doc %{_docdir}/libfwupd
 %doc %{_docdir}/libfwupdplugin
+%ifnarch aarch64
 %optional %{_sysconfdir}/grub.d/35_fwupd
 %{_modulesloaddir}/*
+%endif
 %{_sysconfdir}/%{name}/*
 %{_sysconfdir}/pki/%{name}-metadata/*
 %{_sysconfdir}/pki/%{name}/*
