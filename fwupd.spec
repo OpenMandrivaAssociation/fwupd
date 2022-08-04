@@ -11,7 +11,7 @@
 Summary:	Firmware update daemon
 Name:		fwupd
 Version:	1.8.3
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		System/Boot and Init
 URL:		https://github.com/fwupd/fwupd
@@ -124,9 +124,11 @@ Development files for %{name}.
 %ifarch %{x86_64} %{aarch64}
 	-Dplugin_gpio=enabled \
 	-Dplugin_flashrom=enabled \
-	-Dplugin_uefi_pk=enabled \
+	-Dplugin_uefi_pk=true \
+	-Dplugin_uefi_capsule=true \
+	-Dplugin_uefi_capsule_splash=true \
 	-Dplugin_tpm=enabled \
-	-Defi_binary=false \
+	-Defi_binary=true \
 %else
 	-Dplugin_gpio=disabled \
 	-Dplugin_flashrom=disabled \
