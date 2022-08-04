@@ -11,7 +11,7 @@
 Summary:	Firmware update daemon
 Name:		fwupd
 Version:	1.8.3
-Release:	2
+Release:	3
 License:	GPLv2+
 Group:		System/Boot and Init
 URL:		https://github.com/fwupd/fwupd
@@ -52,6 +52,7 @@ BuildRequires:	pkgconfig(fwupd-efi)
 BuildRequires:	pkgconfig(efivar)
 BuildRequires:	pkgconfig(efiboot)
 BuildRequires:	gnu-efi
+Requires:	fwupd-efi
 %endif
 BuildRequires:	pkgconfig(ModemManager)
 BuildRequires:	pkgconfig(qmi-glib)
@@ -111,6 +112,7 @@ Development files for %{name}.
 	-Dcbor=disabled \
 	-Dbluez=enabled \
 	-Dplugin_powerd=disabled \
+	-Dcompat_cli=true \
 	-Dsupported_build=enabled \
 %ifarch %{x86_64} %{ix86}
 	-Dplugin_dell=enabled \
@@ -121,25 +123,23 @@ Development files for %{name}.
 	-Dplugin_msr=disabled \
 	-Dplugin_synaptics_mst=disabled \
 %endif
-%ifarch %{x86_64} %{aarch64}
-	-Dplugin_gpio=enabled \
-	-Dplugin_flashrom=enabled \
+%ifarch %{efi}
 	-Dplugin_uefi_pk=true \
 	-Dplugin_uefi_capsule=true \
 	-Dplugin_uefi_capsule_splash=true \
-	-Dplugin_tpm=enabled \
 	-Defi_binary=true \
+%else
+	-Dplugin_uefi_capsule=disabled \
+	-Dplugin_uefi_pk=disabled \
+%endif
+%ifarch %{x86_64} %{aarch64}
+	-Dplugin_gpio=enabled \
+	-Dplugin_flashrom=enabled \
+	-Dplugin_tpm=enabled \
 %else
 	-Dplugin_gpio=disabled \
 	-Dplugin_flashrom=disabled \
-	-Dplugin_uefi_capsule=disabled \
-	-Dplugin_uefi_pk=disabled \
 	-Dplugin_tpm=disabled \
-%endif
-%ifarch %{x86_64}
-	-Dplugin_uefi_capsule=enabled \
-%else
-	-Dplugin_uefi_capsule=disabled \
 %endif
 	-Dplugin_modem_manager=enabled || cat build/meson-logs/meson-log.txt
 
@@ -178,10 +178,10 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/fwupd
 %doc %{_docdir}/fwupd
 %doc %{_docdir}/libfwupd
 %doc %{_docdir}/libfwupdplugin
-%ifnarch aarch64
-%optional %{_sysconfdir}/grub.d/35_fwupd
-%{_modulesloaddir}/*
+%ifarch %{efi}
+%{_sysconfdir}/grub.d/35_fwupd
 %endif
+%optional %{_modulesloaddir}/*
 %{_sysconfdir}/%{name}/*
 %{_sysconfdir}/pki/%{name}-metadata/*
 %{_sysconfdir}/pki/%{name}/*
