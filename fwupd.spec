@@ -1,5 +1,3 @@
-%global __requires_exclude ^%{python}$
-
 %global _disable_lto 1
 %global _disable_ld_no_undefined 1
 
@@ -10,8 +8,8 @@
 
 Summary:	Firmware update daemon
 Name:		fwupd
-Version:	1.8.3
-Release:	3
+Version:	1.8.4
+Release:	1
 License:	GPLv2+
 Group:		System/Boot and Init
 URL:		https://github.com/fwupd/fwupd
