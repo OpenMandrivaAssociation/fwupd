@@ -9,7 +9,7 @@
 Summary:	Firmware update daemon
 Name:		fwupd
 Version:	1.8.4
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		System/Boot and Init
 URL:		https://github.com/fwupd/fwupd
@@ -173,9 +173,6 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/fwupd
 %dir %{_libdir}/%{name}-plugins-%{plug_major}
 %dir %{_libexecdir}/%{name}
 %dir %{_datadir}/%{name}
-%doc %{_docdir}/fwupd
-%doc %{_docdir}/libfwupd
-%doc %{_docdir}/libfwupdplugin
 %ifarch %{efi}
 %{_sysconfdir}/grub.d/35_fwupd
 %endif
@@ -216,6 +213,9 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/fwupd
 %{_libdir}/libfwupdplugin.so.%{plug_major}*
 
 %files -n %{develname}
+%doc %{_docdir}/fwupd
+%doc %{_docdir}/libfwupd
+%doc %{_docdir}/libfwupdplugin
 %{_includedir}/%{name}-1
 %{_libdir}/lib%{name}*.so
 %{_libdir}/pkgconfig/%{name}.pc
