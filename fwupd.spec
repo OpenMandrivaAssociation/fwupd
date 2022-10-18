@@ -8,7 +8,7 @@
 
 Summary:	Firmware update daemon
 Name:		fwupd
-Version:	1.8.5
+Version:	1.8.6
 Release:	1
 License:	GPLv2+
 Group:		System/Boot and Init
