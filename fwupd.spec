@@ -109,15 +109,15 @@ Development files for %{name}.
 	-Dtests=false \
 	-Dcbor=disabled \
 	-Dbluez=enabled \
+	-Dpassim=disabled \
+	-Dlaunchd=disabled \
 	-Dplugin_powerd=disabled \
 	-Dcompat_cli=true \
 	-Dsupported_build=enabled \
 %ifarch %{x86_64} %{ix86}
-	-Dplugin_dell=enabled \
 	-Dplugin_msr=enabled \
 	-Dplugin_synaptics_mst=enabled \
 %else
-	-Dplugin_dell=disabled \
 	-Dplugin_msr=disabled \
 	-Dplugin_synaptics_mst=disabled \
 %endif
@@ -176,6 +176,7 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/fwupd
 %ifarch %{efi}
 %{_sysconfdir}/grub.d/35_fwupd
 %endif
+%{_sysusersdir}/fwupd.conf
 %{_libdir}/fwupd-%{version}
 %optional %{_modulesloaddir}/*
 %{_sysconfdir}/%{name}/*
@@ -189,7 +190,6 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/fwupd
 %{_unitdir}/system-update.target.wants/*.service
 %{_unitdir}/fwupd-refresh.service
 %{_unitdir}/fwupd-refresh.timer
-%{_presetdir}/fwupd-refresh.preset
 %{_systemd_util_dir}/system-shutdown/fwupd.shutdown
 %{_udevrulesdir}/*.rules
 #{_libdir}/%{name}-plugins-%{plug_major}/*.so
