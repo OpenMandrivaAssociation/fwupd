@@ -169,8 +169,6 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/fwupd
 
 %files -f %{name}.lang
 %dir %{_sysconfdir}/%{name}
-%dir %{_sysconfdir}/pki/%{name}-metadata
-%dir %{_sysconfdir}/pki/%{name}
 #dir %{_libdir}/%{name}-plugins-%{plug_major}
 %dir %{_libexecdir}/%{name}
 %dir %{_datadir}/%{name}
@@ -181,8 +179,6 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/fwupd
 %{_libdir}/fwupd-%{version}
 %optional %{_modulesloaddir}/*
 %{_sysconfdir}/%{name}/*
-%{_sysconfdir}/pki/%{name}-metadata/*
-%{_sysconfdir}/pki/%{name}/*
 %{_bindir}/*
 %{_libexecdir}/%{name}/*
 %{_presetdir}/86-%{name}.preset
