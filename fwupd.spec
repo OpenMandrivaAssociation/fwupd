@@ -177,6 +177,7 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/fwupd
 %ifarch %{efi}
 %{_sysconfdir}/grub.d/35_fwupd
 %endif
+%{_sysconfdir}/pki/
 %{_sysusersdir}/fwupd.conf
 %{_libdir}/fwupd-%{version}
 %optional %{_modulesloaddir}/*
