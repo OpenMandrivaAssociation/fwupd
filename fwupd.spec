@@ -3,12 +3,13 @@
 
 %define major 2
 %define plug_major 7
-%define libname %mklibname %{name} %{major}
+%define libname %mklibname %{name}
+%define oldlibname %mklibname %{name} 2
 %define develname %mklibname %{name} -d
 
 Summary:	Firmware update daemon
 Name:		fwupd
-Version:	1.9.10
+Version:	1.9.11
 Release:	1
 License:	GPLv2+
 Group:		System/Boot and Init
@@ -89,6 +90,7 @@ to update device firmware on your local machine.
 %package -n %{libname}
 Summary:	Libraries for %{name}
 Group:		System/Libraries
+%rename	%{oldlibname}
 
 %description -n %{libname}
 System libraries for %{name}.
