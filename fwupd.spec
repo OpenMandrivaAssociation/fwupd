@@ -9,8 +9,8 @@
 
 Summary:	Firmware update daemon
 Name:		fwupd
-Version:	1.9.11
-Release:	2
+Version:	1.9.12
+Release:	1
 License:	GPLv2+
 Group:		System/Boot and Init
 URL:		https://github.com/fwupd/fwupd
