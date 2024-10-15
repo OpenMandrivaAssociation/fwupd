@@ -1,7 +1,7 @@
 %global _disable_lto 1
 %global _disable_ld_no_undefined 1
 
-%define major 2
+%define major 3
 %define plug_major 7
 %define libname %mklibname %{name}
 %define oldlibname %mklibname %{name} 2
@@ -9,7 +9,7 @@
 
 Summary:	Firmware update daemon
 Name:		fwupd
-Version:	1.9.24
+Version:	2.0.1
 Release:	1
 License:	GPLv2+
 Group:		System/Boot and Init
@@ -48,7 +48,7 @@ BuildRequires:	pkgconfig(xmlb)
 BuildRequires:	pkgconfig(tss2-esys)
 BuildRequires:	efi-srpm-macros
 %ifarch %{efi}
-BuildRequires:	pkgconfig(fwupd-efi)
+BuildRequires:	pkgconfig(fwupd-efi) >= 1.6
 BuildRequires:	pkgconfig(efivar)
 BuildRequires:	pkgconfig(efiboot)
 BuildRequires:	gnu-efi
@@ -115,7 +115,6 @@ Development files for %{name}.
 	-Dpassim=disabled \
 	-Dlaunchd=disabled \
 	-Dplugin_powerd=disabled \
-	-Dcompat_cli=true \
 	-Dsupported_build=enabled \
 %ifarch %{x86_64} %{ix86}
 	-Dplugin_msr=enabled \
@@ -125,8 +124,8 @@ Development files for %{name}.
 	-Dplugin_synaptics_mst=disabled \
 %endif
 %ifarch %{efi}
-	-Dplugin_uefi_pk=true \
-	-Dplugin_uefi_capsule=true \
+	-Dplugin_uefi_pk=enabled \
+	-Dplugin_uefi_capsule=enabled \
 	-Dplugin_uefi_capsule_splash=true \
 	-Defi_binary=true \
 %else
@@ -185,24 +184,21 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/fwupd
 %{_bindir}/*
 %{_libexecdir}/%{name}/*
 %{_presetdir}/86-%{name}.preset
-%{_unitdir}/%{name}-offline-update.service
 %{_unitdir}/%{name}.service
-%{_unitdir}/system-update.target.wants/*.service
 %{_unitdir}/fwupd-refresh.service
 %{_unitdir}/fwupd-refresh.timer
 %{_systemd_util_dir}/system-shutdown/fwupd.shutdown
-%{_udevrulesdir}/*.rules
 #{_libdir}/%{name}-plugins-%{plug_major}/*.so
 %{_datadir}/dbus-1/system.d/*.conf
 %{_datadir}/dbus-1/interfaces/*.xml
 %{_datadir}/dbus-1/system-services/*.service
+%{_datadir}/icons/*/*/*/org.freedesktop.fwupd.*
 %{_datadir}/polkit-1/actions/*.policy
 %{_datadir}/polkit-1/rules.d/*.rules
 %{_datadir}/fish/vendor_completions.d/fwupdmgr.fish
 %{_datadir}/%{name}/*
 %{_datadir}/bash-completion/completions/%{name}*
 %{_datadir}/metainfo/*.xml
-%{_iconsdir}/hicolor/scalable/apps/*.svg
 #{_datadir}/locale/*/LC_IMAGES/%{name}*
 %dir %{_localstatedir}/lib/fwupd
 %dir %{_localstatedir}/cache/fwupd
@@ -216,8 +212,9 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/fwupd
 %doc %{_docdir}/fwupd
 %doc %{_docdir}/libfwupd
 %doc %{_docdir}/libfwupdplugin
-%{_includedir}/%{name}-1
+%{_includedir}/%{name}-3
 %{_libdir}/lib%{name}*.so
 %{_libdir}/pkgconfig/%{name}.pc
 %{_datadir}/gir-1.0/*.gir
 %{_datadir}/vala/vapi/%{name}.*
+%{_datadir}/installed-tests/fwupd
