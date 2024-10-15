@@ -70,6 +70,7 @@ BuildRequires:	pkgconfig(valgrind)
 BuildRequires:	meson
 BuildRequires:	cmake
 BuildRequires:	pesign
+BuildRequires:	protobuf-compiler
 BuildRequires:	protobuf-c
 BuildRequires:	mingw
 BuildRequires:	vala-devel
