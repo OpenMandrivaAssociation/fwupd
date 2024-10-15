@@ -41,12 +41,13 @@ BuildRequires:	pkgconfig(bash-completion)
 BuildRequires:	pkgconfig(pygobject-3.0)
 BuildRequires:	pkgconfig(py3cairo)
 BuildRequires:	pkgconfig(pangocairo)
-BuildRequires:	python3dist(pillow)
 BuildRequires:	pkgconfig(python)
 BuildRequires:	pkgconfig(pygobject-3.0)
 BuildRequires:	pkgconfig(xmlb)
 BuildRequires:	pkgconfig(tss2-esys)
 BuildRequires:	efi-srpm-macros
+BuildRequires:	python%{pyver}dist(pillow)
+BuildRequires:	python%{pyver}dist(python-dbusmock)
 %ifarch %{efi}
 BuildRequires:	pkgconfig(fwupd-efi) >= 1.6
 BuildRequires:	pkgconfig(efivar)
