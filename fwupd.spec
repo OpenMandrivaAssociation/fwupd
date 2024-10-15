@@ -45,6 +45,7 @@ BuildRequires:	pkgconfig(python)
 BuildRequires:	pkgconfig(pygobject-3.0)
 BuildRequires:	pkgconfig(xmlb)
 BuildRequires:	pkgconfig(tss2-esys)
+BuildRequires:	hwdata
 BuildRequires:	efi-srpm-macros
 BuildRequires:	python%{pyver}dist(pillow)
 BuildRequires:	python%{pyver}dist(python-dbusmock)
