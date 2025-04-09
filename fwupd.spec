@@ -9,7 +9,7 @@
 
 Summary:	Firmware update daemon
 Name:		fwupd
-Version:	2.0.6
+Version:	2.0.8
 Release:	1
 License:	GPLv2+
 Group:		System/Boot and Init
@@ -116,33 +116,16 @@ Development files for %{name}.
 	-Dcbor=disabled \
 	-Dbluez=enabled \
 	-Dpassim=disabled \
-	-Dlaunchd=disabled \
-	-Dplugin_powerd=disabled \
 	-Dsupported_build=enabled \
-%ifarch %{x86_64} %{ix86}
-	-Dplugin_msr=enabled \
-	-Dplugin_synaptics_mst=enabled \
-%else
-	-Dplugin_msr=disabled \
-	-Dplugin_synaptics_mst=disabled \
-%endif
 %ifarch %{efi}
-	-Dplugin_uefi_pk=enabled \
-	-Dplugin_uefi_capsule=enabled \
 	-Dplugin_uefi_capsule_splash=true \
 	-Defi_binary=true \
-%else
-	-Dplugin_uefi_capsule=disabled \
-	-Dplugin_uefi_pk=disabled \
 %endif
 %ifarch %{x86_64} %{aarch64}
-	-Dplugin_gpio=enabled \
 	-Dplugin_flashrom=enabled \
-	-Dplugin_tpm=enabled \
 %else
 	-Dplugin_gpio=disabled \
 	-Dplugin_flashrom=disabled \
-	-Dplugin_tpm=disabled \
 %endif
 	-Dplugin_modem_manager=enabled || cat build/meson-logs/meson-log.txt
 
