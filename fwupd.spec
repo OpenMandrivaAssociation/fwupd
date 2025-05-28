@@ -60,6 +60,7 @@ BuildRequires:	pkgconfig(ModemManager)
 BuildRequires:	pkgconfig(qmi-glib)
 BuildRequires:	pkgconfig(mbim-glib)
 BuildRequires:	pkgconfig(gi-docgen)
+BuildRequires:	pkgconfig(readline)
 #BuildRequires:	flashrom
 BuildRequires:	python-gi
 BuildRequires:	typelib(Pango)
