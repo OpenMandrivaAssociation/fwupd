@@ -9,7 +9,7 @@
 
 Summary:	Firmware update daemon
 Name:		fwupd
-Version:	2.0.8
+Version:	2.0.10
 Release:	1
 License:	GPLv2+
 Group:		System/Boot and Init
@@ -60,6 +60,7 @@ BuildRequires:	pkgconfig(ModemManager)
 BuildRequires:	pkgconfig(qmi-glib)
 BuildRequires:	pkgconfig(mbim-glib)
 BuildRequires:	pkgconfig(gi-docgen)
+BuildRequires:	pkgconfig(readline)
 #BuildRequires:	flashrom
 BuildRequires:	python-gi
 BuildRequires:	typelib(Pango)
