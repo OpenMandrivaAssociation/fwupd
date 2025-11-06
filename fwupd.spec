@@ -30,6 +30,7 @@ BuildRequires:	pkgconfig(jcat)
 BuildRequires:	pkgconfig(json-glib-1.0)
 BuildRequires:	pkgconfig(libsoup-2.4)
 BuildRequires:	pkgconfig(gnutls)
+BuildRequires:	pkgconfig(libmnl)
 BuildRequires:	gpgme-devel
 BuildRequires:	pkgconfig(uuid)
 BuildRequires:	pkgconfig(libgcab-1.0)
