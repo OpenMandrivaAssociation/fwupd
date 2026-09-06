@@ -15,6 +15,8 @@ License:	GPLv2+
 Group:		System/Boot and Init
 URL:		https://github.com/fwupd/fwupd
 Source0:	https://github.com/fwupd/fwupd/archive/%{version}/%{name}-%{version}.tar.gz
+# clang has -fcf-protection but not GCC's noclone; without this the CET helper is not built
+Patch0:		fwupd-2.1.7-clang-cet-helper.patch
 BuildRequires:	pkgconfig(systemd)
 BuildRequires:	pkgconfig(colord)
 BuildRequires:	pkgconfig(polkit-gobject-1)
@@ -115,19 +117,13 @@ Development files for %{name}.
 %meson \
 	-Dman=false \
 	-Dtests=false \
-	-Dcbor=disabled \
+	-Dumockdev_tests=disabled \
 	-Dbluez=enabled \
 	-Dpassim=disabled \
 	-Dsupported_build=enabled \
 %ifarch %{efi}
 	-Dplugin_uefi_capsule_splash=true \
 	-Defi_binary=true \
-%endif
-%ifarch %{x86_64} %{aarch64}
-	-Dplugin_flashrom=enabled \
-%else
-	-Dplugin_gpio=disabled \
-	-Dplugin_flashrom=disabled \
 %endif
 	-Dplugin_modem_manager=enabled || cat build/meson-logs/meson-log.txt
 
@@ -146,15 +142,6 @@ mkdir -p --mode=0700 %{buildroot}%{_localstatedir}/lib/fwupd/gnupg
 mkdir -p %{buildroot}%{_localstatedir}/cache/fwupd
 
 %find_lang %{name}
-
-%post
-%systemd_post fwupd.service
-
-%preun
-%systemd_preun fwupd.service
-
-%postun
-%systemd_postun_with_restart fwupd.service
 
 %files -f %{name}.lang
 %dir %{_sysconfdir}/%{name}
@@ -205,4 +192,3 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/fwupd
 %{_libdir}/pkgconfig/%{name}.pc
 %{_datadir}/gir-1.0/*.gir
 %{_datadir}/vala/vapi/%{name}.*
-%{_datadir}/installed-tests/fwupd

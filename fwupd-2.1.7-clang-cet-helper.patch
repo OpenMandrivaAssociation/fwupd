@@ -1,0 +1,36 @@
+From: OpenMandriva
+Subject: Build fwupd-detect-cet with clang
+
+Meson only builds the CET probe helper when the compiler has the GCC-only
+noclone attribute. Clang supports -fcf-protection (and the helper is a
+standalone executable of a tiny C main plus an assembly stub), so skip
+that check and build whenever -fcf-protection is available on x86_64.
+
+Without this, the daemon logs:
+  failed to test CET: Failed to execute child process
+  "/usr/libexec/fwupd/fwupd-detect-cet" (No such file or directory)
+
+--- a/plugins/cpu/meson.build
++++ b/plugins/cpu/meson.build
+@@ -14,18 +14,10 @@
+   dependencies: plugin_deps,
+ )
+ 
+-code = '''
+-#if !__has_attribute (__noclone__)
+-#error symver attribute not supported
+-#endif
+-static void __attribute__((noinline,noclone)) f(void) {}
+-'''
+-
+-# verify the compiler knows what to do
++# noclone is GCC-only. The helper is a standalone binary (C main + .S stub)
++# compiled with mixed -fcf-protection=full/none; clang can do that.
+ if host_cpu == 'x86_64' and cc.has_argument('-fcf-protection')
+-  build_fwupdcethelper = cc.compiles(code,
+-    name: '__attribute__((noinline,noclone))',
+-  )
++  build_fwupdcethelper = true
+ else
+   build_fwupdcethelper = false
+ endif
