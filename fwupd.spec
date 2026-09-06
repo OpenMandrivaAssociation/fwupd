@@ -118,6 +118,7 @@ Development files for %{name}.
 	-Dman=false \
 	-Dtests=false \
 	-Dumockdev_tests=disabled \
+	-Dhsi=auto \
 	-Dbluez=enabled \
 	-Dpassim=disabled \
 	-Dsupported_build=enabled \
