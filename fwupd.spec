@@ -118,7 +118,11 @@ Development files for %{name}.
 	-Dman=false \
 	-Dtests=false \
 	-Dumockdev_tests=disabled \
-	-Dhsi=auto \
+%ifarch %{ix86} %{x86_64}
+	-Dhsi=enabled \
+%else
+	-Dhsi=disabled \
+%endif
 	-Dbluez=enabled \
 	-Dpassim=disabled \
 	-Dsupported_build=enabled \
