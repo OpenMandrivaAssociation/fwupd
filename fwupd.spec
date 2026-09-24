@@ -9,14 +9,14 @@
 
 Summary:	Firmware update daemon
 Name:		fwupd
-Version:	2.1.7
+Version:	2.1.8
 Release:	1
 License:	GPLv2+
 Group:		System/Boot and Init
 URL:		https://github.com/fwupd/fwupd
 Source0:	https://github.com/fwupd/fwupd/archive/%{version}/%{name}-%{version}.tar.gz
 # clang has -fcf-protection but not GCC's noclone; without this the CET helper is not built
-Patch0:		fwupd-2.1.7-clang-cet-helper.patch
+Patch0:		fwupd-2.1.8-clang-cet-helper.patch
 BuildRequires:	pkgconfig(systemd)
 BuildRequires:	pkgconfig(colord)
 BuildRequires:	pkgconfig(polkit-gobject-1)
