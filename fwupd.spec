@@ -167,7 +167,6 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/fwupd
 %{_unitdir}/%{name}.service
 %{_unitdir}/fwupd-refresh.service
 %{_unitdir}/fwupd-refresh.timer
-%{_systemd_util_dir}/system-shutdown/fwupd.shutdown
 #{_libdir}/%{name}-plugins-%{plug_major}/*.so
 %{_datadir}/dbus-1/system.d/*.conf
 %{_datadir}/dbus-1/interfaces/*.xml
